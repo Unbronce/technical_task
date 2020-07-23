@@ -3,6 +3,7 @@ import UserList from "./components/UserList/UserLIst";
 import MonthList from "./components/MonthList/MonthList";
 
 import classes from "./App.module.css";
+import Header from "./components/Header/Header";
 
 const App = () => {
   const [usersList, setUserslist] = useState([]);
@@ -24,18 +25,21 @@ const App = () => {
   }, []);
 
   return (
-    <div className={classes.App}>
-      <UserList
-        filteredList={filteredUsersList}
-        onUserListHandler={onUserListHandler}
-        birthdayHandler={birthdayHandler}
-      />
-      <MonthList
-        totalBirthdaysPerMonth={amountOfBirthdayPerMonth}
-        filter={onUsersFilteredHandler}
-        usersList={usersList}
-      />
-    </div>
+    <>
+      <Header />
+      <div className={classes.App}>
+        <UserList
+          filteredList={filteredUsersList}
+          onUserListHandler={onUserListHandler}
+          birthdayHandler={birthdayHandler}
+        />
+        <MonthList
+          totalBirthdaysPerMonth={amountOfBirthdayPerMonth}
+          filter={onUsersFilteredHandler}
+          usersList={usersList}
+        />
+      </div>
+    </>
   );
 };
 

@@ -1,0 +1,12 @@
+.Header {
+  height: 55px;
+  line-height: 55px;
+  background-color: #00e5ff;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin-bottom: 10px;
+}
+
+.Caption {
+  margin: 0;
+}

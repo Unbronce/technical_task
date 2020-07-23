@@ -76,7 +76,7 @@ const UserList = React.memo((props) => {
 
   return (
     <ul
-      style={{ width: "300px", listStyle: "none", margin: "0", padding: "0" }}
+      style={{ width: "260px", listStyle: "none", margin: "0", padding: "0" }}
     >
       {list}
     </ul>
