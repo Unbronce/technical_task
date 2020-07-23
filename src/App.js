@@ -16,8 +16,8 @@ const App = () => {
     setUserslist(list);
   }, []);
 
-  const birthdayHandler = useCallback((value) => {
-    setAmountOfBirthdayPerMonth(value);
+  const onBirthdayHandler = useCallback((userBdayByMonth) => {
+    setAmountOfBirthdayPerMonth(userBdayByMonth);
   }, []);
 
   const onUsersFilteredHandler = useCallback((byMonth) => {
@@ -31,7 +31,7 @@ const App = () => {
         <UserList
           filteredList={filteredUsersList}
           onUserListHandler={onUserListHandler}
-          birthdayHandler={birthdayHandler}
+          onBirthdayHandler={onBirthdayHandler}
         />
         <MonthList
           totalBirthdaysPerMonth={amountOfBirthdayPerMonth}

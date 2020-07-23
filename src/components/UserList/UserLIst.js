@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Users from "./Users/Users";
+import Spinner from "../Spinner/Spinner";
 
 const UserList = React.memo((props) => {
   const [users, setUsers] = useState([]);
-  const { filteredList, onUserListHandler, birthdayHandler } = props;
+  const { filteredList, onUserListHandler, onBirthdayHandler } = props;
 
   const months = [
     "january",
@@ -36,19 +37,19 @@ const UserList = React.memo((props) => {
 
   useEffect(() => {
     onUserListHandler(users);
-    birthdayHandler(usersBirthdaysByMonths);
+    onBirthdayHandler(usersBirthdaysByMonths);
   });
-
-  let list = (
-    <li>
-      <p>wait a second...</p>
-    </li>
-  );
 
   users.forEach((item) => {
     let month = new Date(Date.parse(item.dob)).getMonth();
     usersBirthdaysByMonths[months[month]] += 1;
   });
+
+  let list = (
+    <li>
+      <Spinner />
+    </li>
+  );
 
   if (filteredList.length > 0) {
     list = filteredList.map((item) => {

@@ -1,6 +1,9 @@
 import React from "react";
 import MonthLIstItem from "./MonthListItem/MonthListItem";
 
+import classes from "./MonthList.module.css";
+import Spinner from "../Spinner/Spinner";
+
 const MonthList = (props) => {
   const { totalBirthdaysPerMonth, filter, usersList } = props;
   const months = [
@@ -20,7 +23,7 @@ const MonthList = (props) => {
 
   let listItems = (
     <li>
-      <p>wait a second...</p>
+      <Spinner />
     </li>
   );
 
@@ -87,7 +90,13 @@ const MonthList = (props) => {
 
   return (
     <ul
-      style={{ width: "300px", listStyle: "none", margin: "0", padding: "0" }}
+      className={classes.Box}
+      style={{
+        width: "300px",
+        listStyle: "none",
+        margin: "0",
+        padding: "0",
+      }}
     >
       {listItems}
     </ul>
