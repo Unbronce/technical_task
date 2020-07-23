@@ -1,6 +1,7 @@
 .App {
   width: 600px;
   display: flex;
+  align-items: flex-start;
   justify-content: space-around;
   margin: 0 auto;
 }
