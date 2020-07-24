@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "../../Card/Card";
+import Card from "../../../../components/Card/index";
 
 const Users = (props) => {
-  const date = new Date(Date.parse(props.dob)).toUTCString();
+  const date = new Date(Date.parse(props.dob)).toLocaleString();
 
   return (
     <li>

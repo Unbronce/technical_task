@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from "react";
-import UserList from "./components/UserList/UserLIst";
-import MonthList from "./components/MonthList/MonthList";
+import UserList from "./UserList";
+import MonthList from "./MonthList";
 
-import classes from "./App.module.css";
-import Header from "./components/Header/Header";
+import classes from "./styles.module.css";
+import Header from "../../components/Header/index";
 
-const App = () => {
+const MainPage = () => {
   const [usersList, setUserslist] = useState([]);
   const [filteredUsersList, setFilteredUsersList] = useState([]);
   const [amountOfBirthdayPerMonth, setAmountOfBirthdayPerMonth] = useState(
@@ -27,7 +27,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <div className={classes.App}>
+      <div className={classes.Wrapper}>
         <UserList
           filteredList={filteredUsersList}
           onUserListHandler={onUserListHandler}
@@ -43,4 +43,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default MainPage;

@@ -1,8 +1,8 @@
 import React from "react";
-import MonthLIstItem from "./MonthListItem/MonthListItem";
+import MonthLIstItem from "./MonthListItem";
 
-import classes from "./MonthList.module.css";
-import Spinner from "../Spinner/Spinner";
+import classes from "./styles.module.css";
+import Spinner from "../../../components/Spinner";
 
 const MonthList = (props) => {
   const { totalBirthdaysPerMonth, filter, usersList } = props;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Users from "./Users/Users";
-import Spinner from "../Spinner/Spinner";
+import Users from "./User";
+import Spinner from "../../../components/Spinner";
 
 const UserList = React.memo((props) => {
   const [users, setUsers] = useState([]);
@@ -29,10 +29,9 @@ const UserList = React.memo((props) => {
   );
 
   useEffect(() => {
-    let promise = fetch(
-      "https://yalantis-react-school-api.yalantis.com/api/task0/users"
-    );
-    promise.then((res) => res.json()).then((users) => setUsers(users));
+    fetch("https://yalantis-react-school-api.yalantis.com/api/task0/users")
+      .then((res) => res.json())
+      .then((users) => setUsers(users));
   }, []);
 
   useEffect(() => {
