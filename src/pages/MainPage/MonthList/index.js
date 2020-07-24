@@ -3,23 +3,10 @@ import MonthLIstItem from "./MonthListItem";
 
 import classes from "./styles.module.css";
 import Spinner from "../../../components/Spinner";
+import { months } from "../../../utilis/months";
 
 const MonthList = (props) => {
   const { totalBirthdaysPerMonth, filter, usersList } = props;
-  const months = [
-    "january",
-    "february",
-    "march",
-    "april",
-    "may",
-    "june",
-    "july",
-    "august",
-    "september",
-    "october",
-    "november",
-    "december",
-  ];
 
   let listItems = (
     <li>

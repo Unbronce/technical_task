@@ -1,25 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Users from "./User";
 import Spinner from "../../../components/Spinner";
+import useHttp from "./hook";
+import { months } from "../../../utilis/months";
 
 const UserList = React.memo((props) => {
-  const [users, setUsers] = useState([]);
+  const users = useHttp();
   const { filteredList, onUserListHandler, onBirthdayHandler } = props;
-
-  const months = [
-    "january",
-    "february",
-    "march",
-    "april",
-    "may",
-    "june",
-    "july",
-    "august",
-    "september",
-    "october",
-    "november",
-    "december",
-  ];
 
   const usersBirthdaysByMonths = months.reduce(
     (userBirthdays, currentMonth) => {
@@ -29,15 +16,9 @@ const UserList = React.memo((props) => {
   );
 
   useEffect(() => {
-    fetch("https://yalantis-react-school-api.yalantis.com/api/task0/users")
-      .then((res) => res.json())
-      .then((users) => setUsers(users));
-  }, []);
-
-  useEffect(() => {
     onUserListHandler(users);
     onBirthdayHandler(usersBirthdaysByMonths);
-  });
+  }, [onUserListHandler, onBirthdayHandler, users, usersBirthdaysByMonths]);
 
   users.forEach((item) => {
     let month = new Date(Date.parse(item.dob)).getMonth();

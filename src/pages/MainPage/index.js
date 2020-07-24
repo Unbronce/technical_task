@@ -1,28 +1,21 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import UserList from "./UserList";
 import MonthList from "./MonthList";
 
 import classes from "./styles.module.css";
 import Header from "../../components/Header/index";
 
+import useUserList from "./hook";
+
 const MainPage = () => {
-  const [usersList, setUserslist] = useState([]);
-  const [filteredUsersList, setFilteredUsersList] = useState([]);
-  const [amountOfBirthdayPerMonth, setAmountOfBirthdayPerMonth] = useState(
-    null
-  );
-
-  const onUserListHandler = useCallback((list) => {
-    setUserslist(list);
-  }, []);
-
-  const onBirthdayHandler = useCallback((userBdayByMonth) => {
-    setAmountOfBirthdayPerMonth(userBdayByMonth);
-  }, []);
-
-  const onUsersFilteredHandler = useCallback((byMonth) => {
-    setFilteredUsersList(byMonth);
-  }, []);
+  const [
+    usersList,
+    onUserListHandler,
+    filteredUsersList,
+    onBirthdayHandler,
+    amountOfBirthdayPerMonth,
+    onUsersFilteredHandler,
+  ] = useUserList();
 
   return (
     <>
