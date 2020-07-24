@@ -1,5 +1,5 @@
 import React from "react";
-import MonthLIstItem from "./MonthListItem";
+import MonthListItem from "./MonthListItem";
 
 import classes from "./styles.module.css";
 import Spinner from "../../../components/Spinner";
@@ -21,7 +21,7 @@ const MonthList = (props) => {
         totalBirthdaysPerMonth[item] < 2
       ) {
         return (
-          <MonthLIstItem
+          <MonthListItem
             id={id}
             list={usersList}
             filter={filter}
@@ -35,7 +35,7 @@ const MonthList = (props) => {
         totalBirthdaysPerMonth[item] <= 6
       ) {
         return (
-          <MonthLIstItem
+          <MonthListItem
             id={id}
             list={usersList}
             filter={filter}
@@ -49,7 +49,7 @@ const MonthList = (props) => {
         totalBirthdaysPerMonth[item] <= 10
       ) {
         return (
-          <MonthLIstItem
+          <MonthListItem
             id={id}
             list={usersList}
             filter={filter}
@@ -60,7 +60,7 @@ const MonthList = (props) => {
         );
       } else if (totalBirthdaysPerMonth[item] >= 11) {
         return (
-          <MonthLIstItem
+          <MonthListItem
             id={id}
             list={usersList}
             filter={filter}

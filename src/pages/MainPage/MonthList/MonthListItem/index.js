@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import classes from "./styles.module.css";
 
-const MonthLIstItem = (props) => {
+const MonthListItem = (props) => {
   const { filter, id, list } = props;
   const onFilteredUsers = useCallback(() => {
     const filtered = list.filter(
@@ -25,4 +25,4 @@ const MonthLIstItem = (props) => {
   );
 };
 
-export default MonthLIstItem;
+export default MonthListItem;
