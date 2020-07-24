@@ -20,3 +20,13 @@
   padding: 15px;
   border: 1px solid black;
 }
+
+.Box:nth-child(1) {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.Box:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
