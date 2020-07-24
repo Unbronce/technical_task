@@ -10,11 +10,11 @@ import useUserList from "./hook";
 const MainPage = () => {
   const [
     usersList,
-    onUserListHandler,
+    setUsersList,
     filteredUsersList,
-    onBirthdayHandler,
+    setAmountOfBirthdaysPerMonth,
     amountOfBirthdayPerMonth,
-    onUsersFilteredHandler,
+    setFilteredUsersList,
   ] = useUserList();
 
   return (
@@ -23,12 +23,12 @@ const MainPage = () => {
       <div className={classes.Wrapper}>
         <UserList
           filteredList={filteredUsersList}
-          onUserListHandler={onUserListHandler}
-          onBirthdayHandler={onBirthdayHandler}
+          setUsersList={setUsersList}
+          setAmountOfBirthdaysPerMonth={setAmountOfBirthdaysPerMonth}
         />
         <MonthList
           totalBirthdaysPerMonth={amountOfBirthdayPerMonth}
-          filter={onUsersFilteredHandler}
+          filterUsers={setFilteredUsersList}
           usersList={usersList}
         />
       </div>

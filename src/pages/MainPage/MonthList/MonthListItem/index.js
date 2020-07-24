@@ -2,22 +2,23 @@ import React, { useCallback } from "react";
 import classes from "./styles.module.css";
 
 const MonthListItem = (props) => {
-  const { filter, id, list } = props;
-  const onFilteredUsers = useCallback(() => {
+  const { filterUsers, id, list } = props;
+
+  const handleFilter = useCallback(() => {
     const filtered = list.filter(
       (item) => new Date(Date.parse(item.dob)).getMonth() === id
     );
-    filter(filtered);
-  }, [filter, id, list]);
+    filterUsers(filtered);
+  }, [filterUsers, id, list]);
 
-  const onRefreshUsers = useCallback(() => {
-    filter([]);
-  }, [filter]);
+  const handleRefresh = useCallback(() => {
+    filterUsers([]);
+  }, [filterUsers]);
 
   return (
     <li
-      onMouseEnter={onFilteredUsers}
-      onMouseLeave={onRefreshUsers}
+      onMouseEnter={handleFilter}
+      onMouseLeave={handleRefresh}
       className={[classes[props.background], classes.Box].join(" ")}
     >
       {props.name}

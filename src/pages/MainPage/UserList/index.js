@@ -6,7 +6,7 @@ import { months } from "../../../utilis/months";
 
 const UserList = React.memo((props) => {
   const users = useHttp();
-  const { filteredList, onUserListHandler, onBirthdayHandler } = props;
+  const { filteredList, setUsersList, setAmountOfBirthdaysPerMonth } = props;
 
   const usersBirthdaysByMonths = months.reduce(
     (userBirthdays, currentMonth) => {
@@ -16,9 +16,14 @@ const UserList = React.memo((props) => {
   );
 
   useEffect(() => {
-    onUserListHandler(users);
-    onBirthdayHandler(usersBirthdaysByMonths);
-  }, [onUserListHandler, onBirthdayHandler, users, usersBirthdaysByMonths]);
+    setUsersList(users);
+    setAmountOfBirthdaysPerMonth(usersBirthdaysByMonths);
+  }, [
+    setUsersList,
+    setAmountOfBirthdaysPerMonth,
+    users,
+    usersBirthdaysByMonths,
+  ]);
 
   users.forEach((item) => {
     let month = new Date(Date.parse(item.dob)).getMonth();

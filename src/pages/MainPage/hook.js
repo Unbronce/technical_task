@@ -1,31 +1,26 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 
 const useUsersList = () => {
-  const [usersList, setUserslist] = useState([]);
-  const [filteredUsersList, setFilteredUsersList] = useState([]);
-  const [amountOfBirthdayPerMonth, setAmountOfBirthdayPerMonth] = useState(
+  const [usersList, _setUserslist] = useState([]);
+  const [filteredUsersList, _setFilteredUsersList] = useState([]);
+  const [amountOfBirthdayPerMonth, _setAmountOfBirthdaysPerMonth] = useState(
     null
   );
 
-  const onUserListHandler = useCallback((list) => {
-    setUserslist(list);
-  }, []);
+  const setUsersList = (list) => _setUserslist(list);
 
-  const onBirthdayHandler = useCallback((userBdayByMonth) => {
-    setAmountOfBirthdayPerMonth(userBdayByMonth);
-  }, []);
+  const setAmountOfBirthdaysPerMonth = (userBdayByMonth) =>
+    _setAmountOfBirthdaysPerMonth(userBdayByMonth);
 
-  const onUsersFilteredHandler = useCallback((byMonth) => {
-    setFilteredUsersList(byMonth);
-  }, []);
+  const setFilteredUsersList = (byMonth) => _setFilteredUsersList(byMonth);
 
   return [
     usersList,
-    onUserListHandler,
+    setUsersList,
     filteredUsersList,
-    onBirthdayHandler,
+    setAmountOfBirthdaysPerMonth,
     amountOfBirthdayPerMonth,
-    onUsersFilteredHandler,
+    setFilteredUsersList,
   ];
 };
 
