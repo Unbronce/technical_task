@@ -1,5 +1,5 @@
 import React from "react";
-import UserList from "./UserList";
+import UserList from "./UsersList";
 import MonthList from "./MonthList";
 
 import classes from "./styles.module.css";

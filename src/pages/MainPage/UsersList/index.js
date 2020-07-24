@@ -30,43 +30,53 @@ const UserList = React.memo((props) => {
     usersBirthdaysByMonths[months[month]] += 1;
   });
 
-  let list = (
-    <li>
-      <Spinner />
-    </li>
-  );
-
   if (filteredList.length > 0) {
-    list = filteredList.map((item) => {
-      return (
-        <Users
-          key={item.id}
-          firstName={item.firstName}
-          lastName={item.lastName}
-          dob={item.dob}
-        />
-      );
-    });
+    return (
+      <ul
+        style={{
+          width: "260px",
+          listStyle: "none",
+          margin: "0",
+          padding: "0",
+        }}
+      >
+        {filteredList.map((item) => {
+          return (
+            <Users
+              key={item.id}
+              firstName={item.firstName}
+              lastName={item.lastName}
+              dob={item.dob}
+            />
+          );
+        })}
+      </ul>
+    );
   } else if (users.length > 0) {
-    list = users.map((item) => {
-      return (
-        <Users
-          key={item.id}
-          firstName={item.firstName}
-          lastName={item.lastName}
-          dob={item.dob}
-        />
-      );
-    });
+    return (
+      <ul
+        style={{
+          width: "260px",
+          listStyle: "none",
+          margin: "0",
+          padding: "0",
+        }}
+      >
+        {users.map((item) => {
+          return (
+            <Users
+              key={item.id}
+              firstName={item.firstName}
+              lastName={item.lastName}
+              dob={item.dob}
+            />
+          );
+        })}
+      </ul>
+    );
+  } else {
+    return <Spinner />;
   }
-
-  return (
-    <ul
-      style={{ width: "260px", listStyle: "none", margin: "0", padding: "0" }}
-    >
-      {list}
-    </ul>
-  );
 });
 
 export default UserList;
