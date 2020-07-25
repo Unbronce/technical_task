@@ -6,14 +6,14 @@ import Spinner from "../../../components/Spinner";
 import { months } from "../../../utilis/months";
 
 const getMonthColor = (month) => {
-  if (month === 0 && month < 3) {
-    return "Grey";
-  } else if (month >= 3 && month <= 6) {
+  if (month >= 3 && month <= 6) {
     return "Blue";
   } else if (month >= 7 && month <= 10) {
     return "Green";
   } else if (month >= 11) {
     return "Red";
+  } else {
+    return "Grey";
   }
 };
 
