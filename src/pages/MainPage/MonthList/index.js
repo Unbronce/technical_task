@@ -31,9 +31,9 @@ const MonthList = (props) => {
           padding: "0",
         }}
       >
-        {months.map((key, id) => (
+        {months.map((key, index) => (
           <MonthListItem
-            id={id}
+            id={index}
             list={users}
             filterUsers={filterUsers}
             backgroundColor={getMonthColor(totalBirthdaysPerMonth[key])}
