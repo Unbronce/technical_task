@@ -19,7 +19,7 @@ const MonthListItem = (props) => {
     <li
       onMouseEnter={handleFilter}
       onMouseLeave={handleRefresh}
-      className={[classes[props.background], classes.Box].join(" ")}
+      className={[classes[props.backgroundColor], classes.Box].join(" ")}
     >
       {props.name}
     </li>

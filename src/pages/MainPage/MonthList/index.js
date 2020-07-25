@@ -5,8 +5,20 @@ import classes from "./styles.module.css";
 import Spinner from "../../../components/Spinner";
 import { months } from "../../../utilis/months";
 
+const getMonthColor = (month) => {
+  if (month === 0 && month < 3) {
+    return "Grey";
+  } else if (month >= 3 && month <= 6) {
+    return "Blue";
+  } else if (month >= 7 && month <= 10) {
+    return "Green";
+  } else if (month >= 11) {
+    return "Red";
+  }
+};
+
 const MonthList = (props) => {
-  const { totalBirthdaysPerMonth, filterUsers, usersList } = props;
+  const { totalBirthdaysPerMonth, filterUsers, users } = props;
 
   if (totalBirthdaysPerMonth) {
     return (
@@ -19,64 +31,16 @@ const MonthList = (props) => {
           padding: "0",
         }}
       >
-        {months.map((item, id) => {
-          if (
-            totalBirthdaysPerMonth[item] > 0 &&
-            totalBirthdaysPerMonth[item] < 2
-          ) {
-            return (
-              <MonthListItem
-                id={id}
-                list={usersList}
-                filterUsers={filterUsers}
-                background="Grey"
-                name={item}
-                key={item}
-              />
-            );
-          } else if (
-            totalBirthdaysPerMonth[item] >= 3 &&
-            totalBirthdaysPerMonth[item] <= 6
-          ) {
-            return (
-              <MonthListItem
-                id={id}
-                list={usersList}
-                filterUsers={filterUsers}
-                background="Blue"
-                name={item}
-                key={item}
-              />
-            );
-          } else if (
-            totalBirthdaysPerMonth[item] >= 7 &&
-            totalBirthdaysPerMonth[item] <= 10
-          ) {
-            return (
-              <MonthListItem
-                id={id}
-                list={usersList}
-                filterUsers={filterUsers}
-                background="Green"
-                name={item}
-                key={item}
-              />
-            );
-          } else if (totalBirthdaysPerMonth[item] >= 11) {
-            return (
-              <MonthListItem
-                id={id}
-                list={usersList}
-                filterUsers={filterUsers}
-                background="Red"
-                name={item}
-                key={item}
-              />
-            );
-          } else {
-            return <li key={item}>{item}</li>;
-          }
-        })}
+        {months.map((key, id) => (
+          <MonthListItem
+            id={id}
+            list={users}
+            filterUsers={filterUsers}
+            backgroundColor={getMonthColor(totalBirthdaysPerMonth[key])}
+            name={key}
+            key={key}
+          />
+        ))}
       </ul>
     );
   } else {

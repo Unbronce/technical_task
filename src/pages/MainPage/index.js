@@ -8,28 +8,26 @@ import Header from "../../components/Header/index";
 import useUserList from "./hook";
 
 const MainPage = () => {
-  const [
+  const {
     usersList,
-    setUsersList,
     filteredUsersList,
     setAmountOfBirthdaysPerMonth,
     amountOfBirthdayPerMonth,
     setFilteredUsersList,
-  ] = useUserList();
+  } = useUserList();
 
   return (
     <>
       <Header />
       <div className={classes.Wrapper}>
         <UserList
-          filteredList={filteredUsersList}
-          setUsersList={setUsersList}
+          users={filteredUsersList.length > 0 ? filteredUsersList : usersList}
           setAmountOfBirthdaysPerMonth={setAmountOfBirthdaysPerMonth}
         />
         <MonthList
           totalBirthdaysPerMonth={amountOfBirthdayPerMonth}
           filterUsers={setFilteredUsersList}
-          usersList={usersList}
+          users={usersList}
         />
       </div>
     </>

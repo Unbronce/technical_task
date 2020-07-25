@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { months } from "../../utilis/months/index";
 
 const getUsersBirthdaysByMonth = (users) => {
-  const initialMonths = monthsArray.reduce((userBirthdays, currentMonth) => {
+  const initialMonths = months.reduce((userBirthdays, currentMonth) => {
     return { ...userBirthdays, [currentMonth]: 0 };
   }, {});
 
   return users.reduce((birthdaysByMonths, user) => {
     const month = new Date(Date.parse(user.dob)).getMonth();
-    const monthKey = birthdaysByMonths[months[month]];
-
+    const monthKey = months[month];
     return {
       ...birthdaysByMonths,
       [monthKey]: birthdaysByMonths[monthKey] + 1,
@@ -29,22 +28,22 @@ const useUsersList = () => {
       const response = await fetch(
         "https://yalantis-react-school-api.yalantis.com/api/task0/users"
       );
-      const users = response.json();
-      setUserslist(users);
-      setAmountOfBirthdaysPerMonth(getUsersBirthdaysByMonth(usersList));
+      const users = await response.json();
+      setUsersList(users);
+      setAmountOfBirthdaysPerMonth(getUsersBirthdaysByMonth(users));
     };
 
     fetchUsers();
   }, []);
 
-  return [
-    usersList,
-    setUsersList,
-    filteredUsersList,
-    setAmountOfBirthdaysPerMonth,
-    amountOfBirthdayPerMonth,
-    setFilteredUsersList,
-  ];
+  return {
+    usersList: usersList,
+    setUsersList: setUsersList,
+    filteredUsersList: filteredUsersList,
+    setAmountOfBirthdaysPerMonth: setAmountOfBirthdaysPerMonth,
+    amountOfBirthdayPerMonth: amountOfBirthdayPerMonth,
+    setFilteredUsersList: setFilteredUsersList,
+  };
 };
 
 export default useUsersList;
